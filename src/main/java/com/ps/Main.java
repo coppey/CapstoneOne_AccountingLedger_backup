@@ -16,11 +16,16 @@ public class Main
     static Scanner inputScanner = new Scanner(System.in);
     static Scanner commandScanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         loadTransactions();
 
         /*
-        create a main menu that allows a user to 1) add deposit, 2) make payment(debit), 3)access Ledger, 4)exit program
+        create a main menu that allows a user to
+        1) add deposit,
+        2) make payment(debit),
+        3) access Ledger,
+        4) exit program
         this will be done in a series of break cases/switch statements in nested in a do/while loop
          */
 
@@ -41,7 +46,7 @@ public class Main
             try {
                 mainMenuCommand = commandScanner.nextInt();
             } catch (InputMismatchException ime) {
-//                ime.printStackTrace();
+            //ime.printStackTrace();
                 mainMenuCommand = 0;
             }
 
@@ -67,8 +72,9 @@ public class Main
 
         } while (mainMenuCommand != 0);
     }
-        //creat method to load all transactions
-        public static void loadTransactions()
+
+    //creat method to load all transactions
+    public static void loadTransactions()
         {
             try {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("transactions.csv"));
@@ -78,11 +84,15 @@ public class Main
         }
     }
 
-    public static void addDeposit(){
+    public static void addDeposit()
+    {
+        //BufferedWriter method
         System.out.println("Enter deposit amount: ");
     }
 
-    public static void makePayment(){
+    public static void makePayment()
+    {
+        //BufferedWriter method
         System.out.println("Enter payment amount: ");
     }
 
@@ -91,6 +101,9 @@ public class Main
 
     public static void accessLedger()
     {
+        //load reporst
+        loadReports();
+
         //make variable to navigate ledger
         int navLedgerCommand;
 
@@ -102,14 +115,164 @@ public class Main
         3) Display only payments
         4) Run Reports (do/while loop)
          */
+        do {
+            // Display the menu, sout
+            System.out.println("What would you like to do? : ");
+            System.out.println("1) Display All Transactions");
+            System.out.println("2) Display All Deposits");
+            System.out.println("3) Display All Payments");
+            System.out.println("4) Reports");
+            System.out.println("0) Exit");
+            System.out.print("Command: ");
 
 
+        // Use scanner to store the users command input into a variable
+        try {
+            navLedgerCommand = commandScanner.nextInt();
+        } catch (InputMismatchException ime) {
+            //ime.printStackTrace();
+            navLedgerCommand = 0;
+        }
 
+        // switch statement to match the user command to the provided cases
+        switch (navLedgerCommand) {
+            case 1:
+                // methods will match the corresponding command
+                displayAll();
+                break;
+            case 2:
+                displayDeposits();
+                break;
+            case 3:
+                displayPayments();
+                break;
+            case 4:
+                runReports();
+                break;
+            case 0:
+                System.out.println("Thank you for your valuable time, come again");
+                break;
+            default:
+                // Handle incorrect commands
+                System.out.println("Command not found, please try again");
+            }
+
+        }while (navLedgerCommand != 0);
+
+    }
+
+    //creat method to load all transactions
+    public static void loadReports()
+    {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("transactions.csv"));
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void displayAll()
+    {
+        //BufferedWriter method
+        System.out.println("Enter deposit amount: ");
+    }
+
+    public static void displayDeposits()
+    {
+        //BufferedWriter method
+        System.out.println("Enter payment amount: ");
+    }
+
+    public static void displayPayments()
+    {
+        //BufferedWriter method
+        System.out.println("Enter payment amount: ");
+    }
+
+    public static void runReports()
+    {
+        //make variable to navigate ledger
+        int navReportCommand;
+
+        /*
+        another do/while to allow the user to navigate ledger till they wish to return to main menu
+        while they have access the ledger the user can do several things such as:
+        1) Display all transactions
+        2) Display Deposits only
+        3) Display only payments
+        4) Run Reports (do/while loop)
+         */
+        do {
+            // Display the menu, sout
+            System.out.println("How would you like to search the reports?: ");
+            System.out.println("1) Month to Date");
+            System.out.println("2) Previous Month");
+            System.out.println("3) Year to Date");
+            System.out.println("4) Previous Year");
+            System.out.println("5) Search by Vendor");
+            System.out.println("0) Exit");
+            System.out.print("Command: ");
+
+            // Use scanner to store the users command input into a variable
+            try {
+                navReportCommand = commandScanner.nextInt();
+            } catch (InputMismatchException ime) {
+            //ime.printStackTrace();
+                navReportCommand = 0;
+            }
+
+            // switch statement to match the user command to the provided cases
+            switch (navReportCommand) {
+                case 1:
+                    // methods will match the corresponding command
+                    sMTD();
+                    break;
+                case 2:
+                    sPMs();
+                    break;
+                case 3:
+                    sYTD();
+                    break;
+                case 4:
+                    sPY();
+                    break;
+                case 5:
+                    sVedor();
+                    break;
+                case 0:
+                    System.out.println("Thank you for your valuable time, come again");
+                    break;
+                default:
+                    // Handle incorrect commands
+                    System.out.println("Command not found, please try again");
+            }
+
+        }while (navReportCommand != 0);
 
 
 
     }
 
+    public static void sMTD(){
+        System.out.println("Enter deposit amount: ");
+    }
+
+    public static void sPMs(){
+        System.out.println("Enter payment amount: ");
+    }
+
+    public static void sYTD(){
+        System.out.println("Enter payment amount: ");
+    }
+
+    public static void sPY(){
+        System.out.println("Enter payment amount: ");
+    }
+
+    public static void sVedor(){
+        System.out.println("Enter deposit amount: ");
+    }
 
 
 }
